@@ -1,0 +1,31 @@
+<div class="home-wrapper">
+  <div class="home-background">
+    <div class="home-content">
+      <p class="home-heading">JSON<span class="home-span">Placeholder</span></p>
+      <p class="home-text">Angular App</p>
+    </div>
+  </div>
+
+  
+  <div class="card">
+    <a [routerLink]="['/posts']" class="card-link">
+      <div class="card-content">
+        <i class="fas fa-clipboard 2x"></i>
+        <p class="card-text">Posts</p>
+      </div>
+    </a>
+
+    <a [routerLink]="['/albums']" class="card-link">
+      <div class="card-content">
+        <i class="fas fa-images 2x"></i>
+        <p class="card-text">Albums</p>
+      </div>
+    </a>
+    <a [routerLink]="['/todos']" class="card-link" >
+      <div class="card-content">
+        <i class="fas fa-check-square 2x"></i>
+        <p class="card-text">Todos</p>
+      </div>
+    </a>
+  </div>
+</div>

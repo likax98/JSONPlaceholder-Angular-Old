@@ -1,0 +1,83 @@
+.global-btn {
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer !important;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  padding: 6px 24px;
+  text-decoration: none;
+  outline: none !important;
+  background-color:#54a3f7;
+
+  &-blue {
+    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    color: white;
+    padding: 10px 20px;
+    font-size: 21px;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+    background-color: #007dc1;
+    border: 1px solid #124d77;
+    text-shadow: 0px 1px 0px #154682;
+    &:hover {
+      background: linear-gradient(to bottom, $main-blue 5%, $secondary-blue 100%);
+      background-color: #007dc1;
+    }
+  }
+
+  &-yellow {
+    outline: none !important;
+    box-shadow: inset 0px 1px 0px 0px $main-yellow;
+    background: $main-yellow;
+    color: #161c2d;
+    cursor: pointer !important;
+
+    border-radius: 2px;
+    border: 1px solid $secondary-yellow;
+    &:hover {
+      background: linear-gradient(
+        to bottom,
+        $main-yellow 5%,
+        $secondary-yellow 100%
+      );
+      background-color: $main-yellow;
+    }
+  }
+
+  &-red {
+    outline: none !important;
+    cursor: pointer !important;
+    padding: 8px 14px;
+    color: white;
+    box-shadow: inset 0px 1px 0px 0px $secondary-red;
+    background: linear-gradient(to bottom, $secondary-red 5%, $main-red 100%);
+    background-color: $main-red;
+    border-radius: 3px;
+    border: 1px solid $secondary-red;
+    &:hover {
+      background: linear-gradient(to bottom, $main-red 5%, $secondary-red 100%);
+      background-color: $main-red;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(to bottom, #525252 5%, #9c9c9c 100%);
+    background-color: #474747;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+
+  &:disabled {
+    box-shadow: inset 0px 1px 0px 0px grey;
+    background: linear-gradient(to bottom, grey 5%, grey 100%);
+    background-color: grey;
+    border-radius: 3px;
+    border: 1px solid grey;
+    cursor: initial !important;
+  }
+}

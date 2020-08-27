@@ -1,0 +1,24 @@
+<div class="post-table-wrapper">
+  <button class="global-btn-blue" (click)="toggleBtn = !toggleBtn">
+    Add Post
+  </button>
+  <div class="add-post-wrapper" *ngIf="toggleBtn">
+    <app-add-post-form (newPost)="addedPost($event)"></app-add-post-form>
+  </div>
+
+  <ng-container *ngIf="posts.length && (users$ | async)?.length">
+    <app-table
+      [tableHeaders]="tableHeaders"
+    >
+      <tbody *ngFor="let user of users$ | async">
+        <tr *ngFor="let post of posts" [routerLink]="['/posts', post.id]">
+          <ng-container *ngIf="post.userId === user.id || post.username">
+            <td>{{ post.username ? post.username : user.name }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.body }}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </app-table>
+  </ng-container>
+</div>

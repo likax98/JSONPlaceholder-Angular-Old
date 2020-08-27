@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="img-wrapper">
+      <a [routerLink]="['']">
+        <img src="../../../assets/pics/logo.png" alt="logo" class="img" />
+      </a>
+    </div>
+    <ul class="nav-items">
+      <li
+        class="nav-item"
+        [routerLink]="['/posts']"
+        [routerLinkActive]="['isActive']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link">Posts</a>
+      </li>
+      <li
+        class="nav-item"
+        [routerLink]="['/albums']"
+        [routerLinkActive]="['isActive']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link">Albums</a>
+      </li>
+      <li
+        class="nav-item"
+        [routerLink]="['/todos']"
+        [routerLinkActive]="['isActive']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link">Todos</a>
+      </li>
+    </ul>
+  </div>
+</nav>

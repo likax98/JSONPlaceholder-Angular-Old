@@ -1,0 +1,15 @@
+@import "utils/utils";
+
+.post-table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  .add-post-wrapper{
+    margin-bottom: 60px;
+  }
+}
+
+  
+

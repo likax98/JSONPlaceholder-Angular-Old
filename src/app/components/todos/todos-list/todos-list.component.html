@@ -1,0 +1,5 @@
+<div class="todos-wrapper">
+  <div class="todos" *ngFor="let todo of todos$ | async">
+    <app-todo [todo]="todo"></app-todo>
+  </div>
+</div>

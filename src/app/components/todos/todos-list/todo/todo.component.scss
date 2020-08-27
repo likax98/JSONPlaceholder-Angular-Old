@@ -1,0 +1,40 @@
+@import "utils/utils";
+
+.todos-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 2px 2px rgb(9, 11, 129);
+  font-family: "Source Pro", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  border-radius: 10px;
+  .todos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    padding: 30px;
+    background: rgba(white, 0.5);
+    border-radius: 5px;
+
+    span {
+      color: $secondary-blue;
+      padding-right: 5px;
+    }
+
+    .fa-check {
+      color: green;
+    }
+    .fa-times {
+      color: $secondary-red;
+    }
+  }
+
+  &:hover {
+    background: rgb(243, 243, 243);
+  }
+}

@@ -1,0 +1,16 @@
+<div class="albums-table">
+  <app-table [tableHeaders]="tableHeaders">
+    <tbody *ngFor="let user of users">
+      <tr
+        *ngFor="let album of album$ | async"
+        [routerLink]="['/albums', album.id]"
+      >
+        <ng-container *ngIf="album.userId === user.id">
+          <td>{{ user.name }}</td>
+          <td>{{ album.title }}</td>
+          <td>{{ user.photoCount }}</td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </app-table>
+</div>

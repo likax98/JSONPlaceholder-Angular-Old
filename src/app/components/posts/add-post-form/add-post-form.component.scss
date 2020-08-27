@@ -1,0 +1,36 @@
+@import "utils/utils";
+
+
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+  margin-top:30px;
+  width: 600px;
+  border-radius: 5px;
+  background-color: rgba($secondary-blue,0.6);
+  form {
+    padding: 20px;
+    .form-block {
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0;
+      label {
+        margin: 10px 0;
+        color: $white;
+      }
+    }
+    .form-input {
+      padding: 7px;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+    .clean-btn {
+      padding: 8px 14px;
+      margin-left: 10px;
+    }
+  }
+
+}

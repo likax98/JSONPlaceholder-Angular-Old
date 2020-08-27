@@ -1,0 +1,12 @@
+<div class="container todos-wrapper">
+  <div class="todos">
+    <p class="todo-title"><span> Title: </span>{{ todo.title }}</p>
+    <p>
+      <span>Completion: </span>
+      <i
+        class="fas"
+        [ngClass]="todo.completed ? 'fa-check' : 'fa-times'"
+      ></i>
+    </p>
+  </div>
+</div>

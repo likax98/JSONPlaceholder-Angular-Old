@@ -1,0 +1,53 @@
+<div class="post-details-wrapper container" *ngIf="post; else noPost">
+  
+  <form class="post-details" #form="ngForm">
+    <i class="fas fa-arrow-left go-back" *ngIf="!isEditMode" (click)="goBack()"></i>
+    <i class="fas fa-times  close-edit" *ngIf="isEditMode" (click)="isEditMode = false"></i>
+    <p class="post-title">
+      <span class="title"><em>Title</em> </span>
+      <span *ngIf="!isEditMode">{{ post.title }}</span>
+    </p>
+    <input class="post-input"
+      *ngIf="isEditMode"
+      [(ngModel)]="post.title"
+      name="title"
+      #name="ngModel"
+    />
+    <p class="post-body">
+      <span class="title"><em>Body</em> </span>
+      <span *ngIf="!isEditMode">{{ post.body }}</span>
+    </p>
+    <textarea class="post-textarea"
+      *ngIf="isEditMode"
+      rows="5"
+      [(ngModel)]="post.body"
+      name="body"
+      #body="ngModel"
+    ></textarea>
+    <div class="post-detail-buttons">
+      <button class="global-btn-yellow" *ngIf="!isEditMode" (click)="isEditMode = true">Edit</button>
+      <button class="global-btn-yellow" *ngIf="isEditMode" (click)="updatePost(form.value)">Update</button>
+    
+    </div>
+  </form>
+  <div class="post-comments-wrapper" *ngIf="comments; else noComment">
+    <div class="post-comments">
+      <div *ngFor="let comment of comments">
+        <app-post-comment [comment]="comment"></app-post-comment>
+      </div>
+    </div>
+    <div class="comment-form-wrapper">
+      <app-post-comment-form
+        (sendComment)="receivedComment($event)"
+      ></app-post-comment-form>
+    </div>
+  </div>
+</div>
+
+<ng-template #noPost>
+  <div class="error-block">Post are not available :)</div>
+</ng-template>
+
+<ng-template #noComment>
+  <div class="error-block">Comments are not available :)</div>
+</ng-template>

@@ -1,0 +1,71 @@
+@import "utils/utils";
+
+.album-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .toggle-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    width: 170px;
+    height: 46px;
+    padding: 0 10px;
+    background: rgba(black, 0.7);
+    border-radius: 23px;
+    font-size: 16px;
+    font-style: bold;
+    color: white;
+    p {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .toggle-btn {
+      width: 31px;
+      height: 16px;
+      background: white;
+      border-radius: 7px;
+      padding: 2px;
+      .inner-circle {
+        width: 12px;
+        height: 12px;
+        background: $secondary-red;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: margin-left 0.2s ease;
+      }
+    }
+  }
+  .gallery-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .card {
+      width: 25%;
+      display: flex;
+      flex-wrap: wrap;
+      background: white;
+      margin: 30px;
+      border-radius: 10px;
+      .card-img {
+        max-width: 100%;
+        border-radius: 10px;
+      }
+      .card-text {
+        background: white;
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+      }
+      &:hover .card-img{
+        filter: blur(2px);
+      }
+    }
+  }
+}
+
+.toggleActive {
+  color: $secondary-red;
+}

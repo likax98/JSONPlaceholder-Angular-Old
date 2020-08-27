@@ -1,0 +1,39 @@
+<div class="add-post-form">
+  <form #form="ngForm" (ngSubmit)="addPost(form)">
+    <div class="form-block">
+      <label>Post Author</label>
+      <input
+        type="text"
+        class="form-input"
+        name="username"
+        #username
+        [(ngModel)]="post.username"
+        required
+      />
+    </div>
+    <div class="form-block">
+      <label>Title</label>
+      <input
+        type="text"
+        class="form-input"
+        name="title"
+        #title
+        [(ngModel)]="post.title"
+        required
+      />
+    </div>
+    <div class="form-block">
+      <label>Body</label>
+      <input
+        type="text"
+        class="form-input"
+        name="body"
+        #body
+        [(ngModel)]="post.body"
+        required
+      />
+    </div>
+    <button class="global-btn-red" type="submit">Add</button>
+    
+  </form>
+</div>

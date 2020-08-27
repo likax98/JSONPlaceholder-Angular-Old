@@ -1,0 +1,81 @@
+@import "utils/utils";
+
+.home-wrapper {
+  position: relative;
+  .home-background {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        rgba(46, 46, 46, 0.6),
+        rgba(46, 46, 46, 0.7)
+      ),
+      url("../../../assets/pics/main-bg.jpg") no-repeat center bottom / cover;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    .home-content {
+      position: relative;
+      top: 20%;
+      text-align: center;
+      .home-heading {
+        display: flex;
+        font-size: 50px;
+        font-weight: bold;
+        color: $white;
+        .home-span {
+          color: $secondary-red;
+        }
+      }
+      .home-text {
+        margin-top: 10px;
+        font-size: 22px;
+        color: $light-grey-1;
+      }
+    }
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -85px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    .card-link {
+      color: black !important;
+      .card-content {
+        display: flex;
+        width: 15vw;
+        height: 35vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        background: $light-grey-2;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        &:hover {
+          background-color: $light-grey-1;
+          box-shadow: 0 9px 12px 0 rgba(121, 6, 6, 0.6);
+        }
+        .fas {
+          color: transparent;
+          background: linear-gradient(to right, #dc281e, #af0808);
+          background-clip: text;
+          font-size: 5vw;
+        }
+        .card-text {
+          padding-top: 10px;
+          font-size: 25px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

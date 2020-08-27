@@ -1,0 +1,6 @@
+$font-path: "../assets/fonts" !default;
+@font-face {
+  font-family: 'BPG Web';
+  src: url('#{$font-path}/bpg_web.ttf') format('truetype');
+  font-weight: normal;
+}
