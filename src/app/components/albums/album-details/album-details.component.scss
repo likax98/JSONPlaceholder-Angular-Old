@@ -59,9 +59,19 @@
         padding: 20px;
         border-radius: 0 0 10px 10px;
       }
-      &:hover .card-img{
+      &:hover .card-img {
         filter: blur(2px);
       }
+      span {
+        color: $secondary-blue;
+      }
+    }
+    .slider {
+      width: 840px;
+      height: 500px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
   }
 }

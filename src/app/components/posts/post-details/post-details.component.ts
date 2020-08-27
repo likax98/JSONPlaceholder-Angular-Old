@@ -27,7 +27,8 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+
   ) {}
 
   ngOnInit(): void {
@@ -60,11 +61,10 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   }
 
   public updatePost(post: Post): void{
-    console.log(post);
     this.postsService.updatePost(this.post).subscribe((post) => {
       this.isEditMode = false;
-
     });
+    
   }
 
 

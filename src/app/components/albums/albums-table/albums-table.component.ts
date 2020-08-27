@@ -35,10 +35,9 @@ export class AlbumsTableComponent implements OnInit {
     this.usersService.fetchUsers().subscribe((users) => {
       this.users = users;
       for (let user of this.users) {
-        this.albumsService.fetchPhotoByAlbum(user.id).subscribe((res) => {
-          this.photos = res;
-          console.log(this.photos)
-          user.photoCount = res.length;
+        this.albumsService.fetchPhotoByAlbum(user.id).subscribe((photos) => {
+          this.photos = photos;
+          user.photoCount = photos.length;
         });
       }
     });

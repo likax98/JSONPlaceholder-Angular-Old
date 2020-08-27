@@ -1,34 +1,40 @@
 <div class="container album-details-wrapper">
   <div class="toggle-wrapper">
-    <p (click)="isGallery = false" [ngClass]="{ toggleActive: !isGallery }">
+    <p (click)="isSlider = false" [ngClass]="{ toggleActive: !isSlider }">
       Gallery
     </p>
     <div class="toggle-btn">
       <div
         class="inner-circle"
-        (click)="isGallery = !isGallery"
+        (click)="isSlider = !isSlider"
         [ngStyle]="
-          isGallery ? { 'margin-left': '14px' } : { 'margin-left': '0' }
+        isSlider ? { 'margin-left': '14px' } : { 'margin-left': '0' }
         "
       ></div>
     </div>
-    <p (click)="isGallery = true" [ngClass]="{ toggleActive: isGallery }">
+    <p (click)="isSlider = true" [ngClass]="{ toggleActive: isSlider }">
       Slider
     </p>
   </div>
-
   <div class="gallery-wrapper">
-    <!-- <div  >
-   
- <div class="card-title">
- > -->
-    <div class="card" *ngFor="let photo of photos">
+    <div class="slider" *ngIf="isSlider">
+      <ng-image-slider #nav
+        [images]="imageObjects"
+        [infinite]="false"
+        [autoSlide]="1"
+        [imageSize]="{width: '70%', height: '500px'}"
+        slideImage="1"></ng-image-slider>
+    </div>
+    <ng-container *ngIf="!isSlider">
+      <div class="card" *ngFor="let photo of photos">
       <div class="card-image">
         <img [src]="photo.url" alt="Gallery Picture" class="card-img" />
       </div>
       <div class="card-text">
-        <h3>{{ photo.title }}</h3>
+        <h3> <span>Title: </span> {{ photo.title }}</h3>
       </div>
     </div>
+    </ng-container>
+    
   </div>
 </div>

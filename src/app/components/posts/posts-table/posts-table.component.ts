@@ -19,13 +19,14 @@ export class PostsTableComponent implements OnInit {
   public tableHeaders: string[] = ["post's user", 'title', 'body'];
   constructor(
     public postsService: PostsService,
-    public usersService: UsersService
+    public usersService: UsersService,
+
   ) {}
 
   ngOnInit(): void {
     this.fetchPosts();
-
     this.users$ = this.usersService.fetchUsers();
+  
   }
 
   fetchPosts() {
@@ -35,7 +36,7 @@ export class PostsTableComponent implements OnInit {
   }
 
   public addedPost(post: Post) {
-    console.log(post)
+    console.log(post);
     this.posts.unshift(post);
   }
 }
