@@ -1,34 +1,30 @@
-import { PostComment } from './../../../models/comment';
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PostComment } from './../../../models/comment';
 
 @Component({
   selector: 'app-post-comment-form',
   templateUrl: './post-comment-form.component.html',
-  styleUrls: ['./post-comment-form.component.scss']
+  styleUrls: ['./post-comment-form.component.scss'],
 })
-export class PostCommentFormComponent implements OnInit {
-  public newComment: PostComment = new PostComment;
+export class PostCommentFormComponent {
+  //
   @ViewChild('form') form: NgForm;
-  @Output() sendComment: EventEmitter<PostComment> = new EventEmitter<PostComment>();
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  //
+  @Output()
+  sendComment = new EventEmitter<PostComment>();
 
-  addComment(form: NgForm) {
-    // console.log(form.value);
-    if (!form.valid)  {
+  //
+  newComment: PostComment;
+
+  //
+  addComment(form: NgForm): void {
+    if (!form.valid) {
       return;
     }
-    // this.commentService.savePost(form.value).subscribe((resp) => {
-    //   this.newComment.emit(form.value);
-    //   this.form.reset();
-    // });
 
-       this.sendComment.emit(form.value);
-      this.form.reset();
+    this.sendComment.emit(form.value);
+    this.form.reset();
   }
-
-
 }

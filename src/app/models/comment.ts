@@ -1,7 +1,7 @@
-export class PostComment {
-    postId: number = null;
-    id: number= null;
-    name: string = '';
-    email?: string = '';
-    body: string = '';
+export interface PostComment {
+    postId: number;
+    id: number;
+    name: string;
+    email?: string;
+    body: string;
 }

@@ -5,15 +5,16 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class LoaderService {
- public loader = new BehaviorSubject<boolean>(false);
+  //
+  loader = new BehaviorSubject<boolean>(false);
 
-  constructor() {}
-
-  public showLoader(): void {
+  //
+  showLoader(): void {
     this.loader.next(true);
   }
 
-  public hideLoader(): void {
+  //
+  hideLoader(): void {
     this.loader.next(false);
   }
 }

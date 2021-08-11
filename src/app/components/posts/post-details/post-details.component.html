@@ -27,7 +27,7 @@
     <input type="hidden" [(ngModel)]="post.id" name="id">
     <div class="post-detail-buttons">
       <button class="global-btn-yellow" *ngIf="!isEditMode" (click)="isEditMode = true">Edit</button>
-      <button class="global-btn-yellow" *ngIf="isEditMode" (click)="updatePost(form.value)">Update</button>
+      <button class="global-btn-yellow" *ngIf="isEditMode" (click)="updatePost()">Update</button>
     
     </div>
   </form>

@@ -1,6 +1,6 @@
-export class Album {
-    userId: number = null;
-    id: number = null;
-    title: string = null;
+export interface Album {
+    userId: number;
+    id: number;
+    title: string;
   }
 

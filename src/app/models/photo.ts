@@ -1,8 +1,7 @@
-export class Photo {
-  albumId: number = null;
-  id: number = null
-  title: string = '';
-  url: string = '';
-  thumbnailUrl?: string = '';
-  
+export interface Photo {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl?: string;
 }

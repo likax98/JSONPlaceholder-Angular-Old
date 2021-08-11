@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-wildcard',
   templateUrl: './wild-card.component.html',
-  styleUrls: ['./wild-card.component.scss']
+  styleUrls: ['./wild-card.component.scss'],
 })
-export class WildCardComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class WildCardComponent {}

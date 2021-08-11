@@ -1,6 +1,6 @@
-import { TodosService } from './../../../core/services/todos.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TodosService } from './../../../core/services/todos.service';
 import { Todo } from 'src/app/models/todo';
 
 @Component({
@@ -9,14 +9,14 @@ import { Todo } from 'src/app/models/todo';
   styleUrls: ['./todos-list.component.scss']
 })
 export class TodosListComponent implements OnInit {
+  //
+  todos$: Observable<Todo[]>;
 
-  public todos$: Observable<Todo[]>;
-
+  //
   constructor(private todosService:TodosService) { }
 
+  //
   ngOnInit(): void {
     this.todos$ = this.todosService.fetchTodos();
   }
-
-
 }

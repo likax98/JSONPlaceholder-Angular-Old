@@ -1,32 +1,56 @@
 import { NgForm } from '@angular/forms';
 import { PostsService } from 'src/app/core/services/posts.service';
 import { Post } from 'src/app/models/post';
-import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { User } from 'src/app/models/user';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-post-form',
   templateUrl: './add-post-form.component.html',
-  styleUrls: ['./add-post-form.component.scss']
+  styleUrls: ['./add-post-form.component.scss'],
 })
-export class AddPostFormComponent implements OnInit {
-  public post: Post = new Post();
+export class AddPostFormComponent {
+  //
   @ViewChild('form') form: NgForm;
+  //
   @Output() newPost: EventEmitter<Post> = new EventEmitter<Post>();
-  constructor(private postsService: PostsService) { }
 
-  ngOnInit(): void {
-  }
+  //
+  post: Post;
 
-  public addPost(form) {
-    // console.log(form.value);
-    if (!form.valid)  {
+  //
+  private unsubscribe$ = new Subject();
+
+  //
+  constructor(private postsService: PostsService) {}
+
+  //
+  addPost(form: any): void {
+    if (!form.valid) {
       alert('Please enter form');
       return;
     }
-    this.postsService.addPost(form.value).subscribe((post: Post) => {
-      this.newPost.emit(form.value);
-      this.form.reset();
-    });
+
+    this.postsService
+      .addPost(form.value)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => {
+        this.newPost.emit(form.value);
+        this.form.reset();
+      });
+  }
+
+  //
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

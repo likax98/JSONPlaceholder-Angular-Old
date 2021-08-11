@@ -2,8 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Photo } from 'src/app/models/photo';
-import { Subscription } from 'rxjs';
-
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-album-details',
@@ -11,48 +11,56 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./album-details.component.scss'],
 })
 export class AlbumDetailsComponent implements OnInit, OnDestroy {
-  public isSlider: boolean = false;
-  public photos: Photo[] = [];
-  public imageObjects: any = [];
+  //
+  isSlider = false;
 
-  private albumsSubscription: Subscription;
+  //
+  photos: Photo[] = [];
 
+  //
+  imageObjects = [];
+
+  //
+  private unsubscribe$ = new Subject();
+
+  //
   constructor(
     private albumsService: AlbumsService,
     private route: ActivatedRoute
   ) {}
 
+  //
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const id = +params['id'];
-      this.fetchPhotosByAlbum(id);
-    });
-   
+    this.listenRoute();
   }
 
-  public fetchPhotosByAlbum(id: number): void {
+  //
+  private listenRoute(): void {
+    this.route.params.pipe(takeUntil(this.unsubscribe$)).subscribe((params) => {
+      this.fetchPhotosByAlbum(+params['id']);
+    });
+  }
+
+  //
+  private fetchPhotosByAlbum(id: number): void {
     this.albumsService
       .fetchPhotoByAlbum(id)
-      .subscribe((photos: Photo[]) =>
-        {
-          this.photos = photos;
-         this.imageObjects = photos.map(photo => {
-            return {
-              image: photo.url,
-              thumbImage: photo.thumbnailUrl,
-              title: photo.title
-            }
-          })
-          
-        }
-      );
-  }
- 
-  ngOnDestroy(): void {
-    if (this.albumsSubscription) {
-      this.albumsSubscription.unsubscribe();
-    }
-    
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((photos: Photo[]) => {
+        this.photos = photos;
+        this.imageObjects = photos.map((photo) => {
+          return {
+            image: photo.url,
+            thumbImage: photo.thumbnailUrl,
+            title: photo.title,
+          };
+        });
+      });
   }
 
+  //
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

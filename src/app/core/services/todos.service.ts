@@ -10,11 +10,11 @@ const URL = 'https://jsonplaceholder.typicode.com/todos';
 })
 export class TodosService {
 
+  //
   constructor(private _http: HttpClient) { }
 
+  //
   fetchTodos():Observable<Todo[]> {
     return this._http.get<Todo[]>(URL);
   }
-
-
 }

@@ -2,14 +2,19 @@
 
 <div class="add-comment-wrapper">
   <div class="img-wrapper">
-      <img 
-    src="../../../../assets/pics/facebook-avatar.jpg"
-    alt="facebook-avatar"
-    class="facebook-avatar"
-  />
+    <img
+      src="../../../../assets/pics/facebook-avatar.jpg"
+      alt="facebook-avatar"
+      class="facebook-avatar"
+    />
   </div>
 
-  <form #form="ngForm" (ngSubmit)="addComment(form)" (keyup.enter)="addComment(form)" class="comment-form">
+  <form
+    #form="ngForm"
+    (ngSubmit)="addComment(form)"
+    (keyup.enter)="addComment(form)"
+    class="comment-form"
+  >
     <div class="form-group">
       <label class="form-label label-blue">Name</label>
       <input
@@ -35,7 +40,11 @@
     </div>
 
     <input type="hidden" name="id" [(ngModel)]="newComment.id" />
-    <button class="global-btn comment-btn" type="submit" [disabled]="!form.valid">
+    <button
+      class="global-btn comment-btn"
+      type="submit"
+      [disabled]="!form.valid"
+    >
       Add
     </button>
   </form>

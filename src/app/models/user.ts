@@ -1,7 +1,7 @@
-export class User {
-  id: number = null;
-  name: string = '';
-  username?: string = '';
-  email?: string = '';
-  photoCount?: number = null;
+export interface User {
+  id: number;
+  name: string;
+  username?: string;
+  email?: string;
+  photoCount?: number;
 }
